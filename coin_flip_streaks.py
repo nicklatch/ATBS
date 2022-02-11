@@ -1,15 +1,21 @@
 # Coin Flip Streaks
 
 import random
-experimentNumber = 0
 numberOfStreaks = 0
 for experimentNumber in range(10000):
-    coin = "h" * 50 + "t" * 50
-    flip_list = random.sample(coin, 100)
-    if flip_list[experimentNumber:experimentNumber + 5] == ["h", "h", "h", "h", "h", "h", ] or ["t", "t", "t", "t", "t", "t"]:
-        numberOfStreaks += 1
-        continue
+    coinFlip = []
+    streak = 0
+#Code that creates a list of 100 'heads' or tails.
+    for i in range(100):
+        coinFlip.append(random.randint(0,1))
+    # Code that creates a list if there is a streak of 6 heads or 'tails' values.
+    for i in range(len(coinFlip)):
+        if i == 0:
+            pass
+        elif coinFlip[i] == coinFlip[i-1]:
+            streak += 1
+        if streak == 6:
+            numberOfStreaks += 1
+print("Chance of streak: %s%%"  % (numberOfStreaks / (100 * 10000)))
 
-# code that checks if there is a streak of 6 heads or 6 tails in a row.
 
-print("Chance of streaks: %s%%" % (numberOfStreaks / 100))
